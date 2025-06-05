@@ -1,5 +1,3 @@
-# 8x8 숫자 이미지 분류 (sklearn digits 데이터 셋 사용)
-# 8x8 digit image classification (using sklearn digits dataset)
 from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -7,20 +5,16 @@ import matplotlib.pyplot as plt
 
 def mini_mnist():
     # 데이터 로드
-    # Load data
     digits = load_digits()
     X, y = digits.data, digits.target
 
     # 정규화 (0-16 -> 0-1)
-    # Normalize (0-16 -> 0-1)
     X = X / 16.0
 
     # 원-핫 인코딩
-    # One-hot encoding
     y_onehot = np.eye(10)[y]
 
     # 훈련/테스트 분할
-    # Train/test split
     X_train, X_test, y_train, y_test = train_test_split(
         X, y_onehot, test_size=0.2, random_state=42
     )
